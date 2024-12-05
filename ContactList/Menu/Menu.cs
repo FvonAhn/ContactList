@@ -1,4 +1,7 @@
-﻿namespace ContactList.Menu;
+﻿using ContactList.Services;
+using ContactList.Menu;
+
+namespace ContactList.Menu;
 internal class Menu
 {
     public void MainMenu()
@@ -24,10 +27,11 @@ internal class Menu
         switch (answer.ToLower())
         {
             case "1":
-                Console.WriteLine("You choose to List contacts.");
+                Console.WriteLine("You choose to List contacts."); // placeholder line
                 break;
             case "2":
-                Console.WriteLine("You choose to add a contact.");
+                var AddContact = new ContactDialog();
+                AddContact.AddContactDialog();
                 break;
             case "q":
                 QuitApp();
@@ -40,12 +44,14 @@ internal class Menu
     }
     public void QuitApp()
     {
+        Console.Clear();
         Console.WriteLine("Are you sure you want to quit?");
-        Console.WriteLine($"{"",-10}Y / N");
-        var QuitAppAnswer = Console.ReadLine()!;
+        Console.WriteLine($"{"",-11}Y / N");
+        var quitAppAnswer = Console.ReadLine()!;
 
-        if (QuitAppAnswer.ToLower() == "y")
+        if (quitAppAnswer.ToLower() == "y")
         {
+            Console.Clear();
             Console.WriteLine("Goodbye!");
             Environment.Exit(0);
         }
