@@ -1,8 +1,8 @@
-﻿using ContactList.Services;
-using ContactList.Menu;
+﻿using ContactList.Models;
+using ContactList.Factory;
 
 namespace ContactList.Menu;
-internal class Menu
+public class Menu
 {
     public void MainMenu()
     {
@@ -30,8 +30,8 @@ internal class Menu
                 Console.WriteLine("You choose to List contacts."); // placeholder line
                 break;
             case "2":
-                var AddContact = new ContactDialog();
-                AddContact.AddContactDialog();
+                var AddContact = new ContactFactory();
+                AddContact.AddContactFactory();
                 break;
             case "q":
                 QuitApp();
