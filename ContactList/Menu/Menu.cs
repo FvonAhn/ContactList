@@ -17,10 +17,13 @@ public class Menu
     }
     public void MenuMessage()
     {
+        var contact = new Contacts();
+
         Console.Clear();
         Console.WriteLine("Choose!");
         Console.WriteLine($"{"1.",-5} List Contacts.");
         Console.WriteLine($"{"2.",-5} New Contact.");
+        Console.WriteLine($"{"3.",-5} Show Latest Contact Added.");
         Console.WriteLine($"{"Q.",-5} Close Application.");
         var answer = Console.ReadLine()!;
 
@@ -32,6 +35,11 @@ public class Menu
             case "2":
                 var AddContact = new ContactFactory();
                 AddContact.AddContactFactory();
+                break;
+            case "3":
+                Console.Clear();
+                Console.WriteLine("Latest contact added.");
+                Console.WriteLine($"{contact.FirstName} {contact.LastName}");
                 break;
             case "q":
                 QuitApp();
