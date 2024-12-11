@@ -1,5 +1,5 @@
 ﻿namespace ContactList.Models;
-public class Contacts
+public class Contact
 {
     public string ID { get; set; } = null!;
     public string FirstName { get; set; } = null!;
@@ -8,7 +8,7 @@ public class Contacts
     public string Email { get; set; } = null!;
     public string Phone { get; set; } = null!;
 
-    public Contacts()
+    public Contact()
     {
         ID = Guid.NewGuid().ToString();
     }

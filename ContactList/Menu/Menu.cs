@@ -1,5 +1,6 @@
 ﻿using ContactList.Models;
 using ContactList.Factory;
+using System.Diagnostics.Contracts;
 
 namespace ContactList.Menu;
 public class Menu
@@ -17,8 +18,6 @@ public class Menu
     }
     public void MenuMessage()
     {
-        var contact = new Contacts();
-
         Console.Clear();
         Console.WriteLine("Choose!");
         Console.WriteLine($"{"1.",-5} List Contacts.");
@@ -30,16 +29,19 @@ public class Menu
         switch (answer.ToLower())
         {
             case "1":
-                Console.WriteLine("You choose to List contacts."); // placeholder line
+                Console.Clear();
+                Console.WriteLine("List of contacts:");
+                foreach (var contact in TheContactList.Contacts)
+                    Console.WriteLine($"{contact.FirstName} {contact.LastName}, {contact.Address}, {contact.Email}, {contact.Phone}");
                 break;
             case "2":
                 var AddContact = new ContactFactory();
-                AddContact.AddContactFactory();
+                ContactFactory.AddContactFactory();
                 break;
             case "3":
                 Console.Clear();
                 Console.WriteLine("Latest contact added.");
-                Console.WriteLine($"{contact.FirstName} {contact.LastName}");
+                Console.WriteLine($"");
                 break;
             case "q":
                 QuitApp();
