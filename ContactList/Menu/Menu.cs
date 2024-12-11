@@ -39,9 +39,18 @@ public class Menu
                 ContactFactory.AddContactFactory();
                 break;
             case "3":
-                Console.Clear();
-                Console.WriteLine("Latest contact added.");
-                Console.WriteLine($"");
+                if (TheContactList.Contacts.Count > 0)
+                {
+                    var latestContact = TheContactList.Contacts.Last();
+                    Console.Clear();
+                    Console.WriteLine("Latest contact added:");
+                    Console.WriteLine($"{latestContact.FirstName} {latestContact.LastName}");
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("No contacts available");
+                }
                 break;
             case "q":
                 QuitApp();
