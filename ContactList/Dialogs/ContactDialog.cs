@@ -1,13 +1,13 @@
 ﻿using ContactList.Models;
 
-namespace ContactList.Factory;
-public class ContactFactory
+namespace ContactList.Dialogs;
+public class ContactDialog
 {
     public static void AddContactFactory()
     {
         bool isTrue = true;
 
-        while (isTrue) 
+        while (isTrue)
         {
             var contact = new Contact();
             Console.Clear();

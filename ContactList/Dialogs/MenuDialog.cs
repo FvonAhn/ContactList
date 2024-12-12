@@ -1,9 +1,8 @@
 ﻿using ContactList.Models;
-using ContactList.Factory;
 using System.Diagnostics.Contracts;
 
-namespace ContactList.Menu;
-public class Menu
+namespace ContactList.Dialogs;
+public class MenuDialog
 {
     public void MainMenu()
     {
@@ -29,28 +28,14 @@ public class Menu
         switch (answer.ToLower())
         {
             case "1":
-                Console.Clear();
-                Console.WriteLine("List of contacts:");
-                foreach (var contact in TheContactList.Contacts)
-                    Console.WriteLine($"{contact.FirstName} {contact.LastName}, {contact.Address}, {contact.Email}, {contact.Phone}");
+                ListContacts();
                 break;
             case "2":
-                var AddContact = new ContactFactory();
-                ContactFactory.AddContactFactory();
+                var AddContact = new ContactDialog();
+                ContactDialog.AddContactFactory();
                 break;
             case "3":
-                if (TheContactList.Contacts.Count > 0)
-                {
-                    var latestContact = TheContactList.Contacts.Last();
-                    Console.Clear();
-                    Console.WriteLine("Latest contact added:");
-                    Console.WriteLine($"{latestContact.FirstName} {latestContact.LastName}");
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("No contacts available");
-                }
+                LatestContact();
                 break;
             case "q":
                 QuitApp();
@@ -60,6 +45,28 @@ public class Menu
                 break;
         }
         Console.ReadKey();
+    }
+    public void ListContacts()
+    {
+        Console.Clear();
+        Console.WriteLine("List of contacts:");
+        foreach (var contact in TheContactList.Contacts)
+            Console.WriteLine($"{contact.FirstName} {contact.LastName}, {contact.Address}, {contact.Email}, {contact.Phone}");
+    }
+    public void LatestContact()
+    {
+        if (TheContactList.Contacts.Count > 0)
+        {
+            var latestContact = TheContactList.Contacts.Last();
+            Console.Clear();
+            Console.WriteLine("Latest contact added:");
+            Console.WriteLine($"{latestContact.FirstName} {latestContact.LastName}");
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("No contacts available");
+        }
     }
     public void QuitApp()
     {

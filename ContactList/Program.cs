@@ -1,5 +1,5 @@
-﻿using ContactList.Menu;
+﻿using ContactList.Dialogs;
 
-var dialog = new Menu();
+var dialog = new MenuDialog();
 
 dialog.MainMenu();
