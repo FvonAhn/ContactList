@@ -1,4 +1,5 @@
 ﻿using ContactList.Models;
+using System.Data;
 using System.Diagnostics.Contracts;
 
 namespace ContactList.Dialogs;
@@ -49,9 +50,15 @@ public class MenuDialog
     public void ListContacts()
     {
         Console.Clear();
-        Console.WriteLine("List of contacts:");
+        Console.WriteLine("List of contacts:\n");
+        if (TheContactList.Contacts.Count < 1)
+        {
+            Console.Clear();
+            Console.WriteLine("The contact list is empty");
+        }
         foreach (var contact in TheContactList.Contacts)
-            Console.WriteLine($"{contact.FirstName} {contact.LastName}, {contact.Address}, {contact.Email}, {contact.Phone}");
+            Console.WriteLine($"Full name:{contact.FirstName} {contact.LastName}.\nAdress:{contact.Address}.\nEmail:{contact.Email}.\nPhone number:{contact.Phone}\n");
+
     }
     public void LatestContact()
     {
